@@ -1,14 +1,16 @@
 (function(window, document){
 
-	var email, name, video, myForm;
+	var email, name, video, myForm, isWinner;
 
 	function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
 
 	function init(e){
-		cl('init');
 		email = document.getElementById('email');
 		name = document.getElementById('name');
 		video = document.getElementById('video');
+
+		isWinner = (document.querySelector('.video-wrapper').getAttribute("data-id") !== null);
+		cl('init isWinner ? '+isWinner);
 
 		myForm = {
 			email:{value:'E-mail'},
@@ -40,6 +42,7 @@
 		if(video.readyState===4){
 			playVideo();
 		}else{
+			cl('Video not ready... waiting for canplay event');
 			video.addEventListener('canplay', onVideoReady, false);
 		}
 		document.querySelector('.ani').classList.remove('hidden');
@@ -55,16 +58,18 @@
 	}
 	function onVideoEnd(){
 		cl('	onVideoEnd');
-		var _btn = document.querySelector('.continue');
-		_btn.classList.remove('hidden');
-		_btn.addEventListener('click', onContClick);
-
 		video.pause();
+
+		if(isWinner){
+			var _btn = document.querySelector('.continue');
+			_btn.classList.remove('hidden');
+			_btn.addEventListener('click', onContClick);
+		};
 	}
+
 	function showEnd(e){
 		cl('showEnd');
 		document.querySelector('.finale').classList.remove('hidden');
-
 	}
 	
 	/* Form */

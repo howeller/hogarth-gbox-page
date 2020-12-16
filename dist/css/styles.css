@@ -38,14 +38,14 @@
 }
 
 body { 
-  background: url(../images/bg.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: var(--dark-blue);
-  margin: 0;
-  padding: 0;
+	background: url(../images/bg.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: var(--dark-blue);
+	margin: 0;
+	padding: 0;
 }
 
 p, div, input, video {
@@ -109,6 +109,7 @@ svg#logo{
 	border-radius: 20px;
 	border: 1px rgba(255, 255, 255, 1) solid;
 	overflow: hidden;
+	-webkit-transform: translateZ(0);
 }
 video{
 	width: 100%;
@@ -158,3 +159,8 @@ input#name:hover{background-color: yellow}
 input#email:hover{background-color: pink}
 
 
+@media only screen and (max-width: 450px) {
+	body { 
+		background: url(../images/bg_mobile.png) no-repeat center center fixed !important; 
+	}
+}

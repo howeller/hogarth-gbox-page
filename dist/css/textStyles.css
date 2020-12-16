@@ -22,7 +22,7 @@ body{
 	font-family: "HelveticaNeue",Helvetica,Arial,sans-serif;
 	/*font-size: 45px;*/
 	/*font-size: calc(1.5vw + 15px);*/
-	font-size: clamp(27px, 4vw, 45px);
+	font-size: clamp(28px, 4vw, 45px);
 	line-height: 1.42857;
 }
 
@@ -35,13 +35,10 @@ p{
 }
 
 .h1{
-	/*font-size: 1em;*/
-	/*font-size: calc(1.5vw + 15px);*/
 	font-weight: 300;
 }
 
 span.golden{
-	/*color: #ddb66a;*/
 	color: var(--gold-color);
 	font-weight: 700;
 	display: block;
@@ -55,24 +52,21 @@ span.golden{
 
 .cta-txt{
 	font-weight: 700;
-	/*font-size:2em;*/
 	font-size: 24px;
 	color: white;
 }
 
 .finale-txt{
-	font-size:0.5em;
+	font-size:clamp(17px, 4vw, 22px);
 	font-weight: 300;
 	font-style: italic;
-	padding: 0px 35px;
+	padding-top: clamp(5px, 2vw, 35px);
+	padding-bottom: clamp(5px, 2vw, 35px);
+	padding-left: clamp(55px, 4vw, 70px);
+	padding-right: clamp(55px, 4vw, 70px);
+	/*padding: 10px 70px;*/
 }
 input#name, input#email{
 	color: var(--dark-blue);
 	font-size: 14px;
 }
-
-/*@media only screen and (max-device-width: 600px) {
-	.h1{
-		font-size: 15px !important;
-	}
-}*/
