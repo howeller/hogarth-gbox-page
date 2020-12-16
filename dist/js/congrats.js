@@ -16,13 +16,12 @@
 		}
 
 		 document.querySelector('.play').addEventListener('click', onPlayClick);
-		//document.querySelector('.play').addEventListener('click', onContClick);
 	}
 
 	function onPlayClick(e){
 		cl('onPlayClick');
 		document.querySelector('.step1').classList.add('fadeOut');
-		document.querySelector('.ani').classList.remove('hidden');
+		// loadVideo();
 		setTimeout(loadVideo, 400);
 	}
 
@@ -37,11 +36,17 @@
 	/* Video */
 
 	function loadVideo(e){
-		cl('loadVideo ');
-		video.load();//Aborts existing media
+		cl('loadVideo '+video.readyState);
 
-		video.src = 'video/winner.mp4';
-	 	video.addEventListener('canplay', onVideoReady);
+		if(video.readyState===4){
+			playVideo();
+		}else{
+			video.addEventListener('canplay', onVideoReady, false);
+		// video.addEventListener("canplaythrough", onVideoReady);
+	 	// video.addEventListener('loadeddata', onVideoReady, false);
+		}
+		// video.src = 'video/Hogarth_TheGoldenBox_800x800_animation2.mp4';
+		document.querySelector('.ani').classList.remove('hidden');
 		video.addEventListener('ended', onVideoEnd);
 	}
 	function playVideo(){

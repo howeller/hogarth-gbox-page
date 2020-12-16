@@ -10,6 +10,12 @@
 	-webkit-transition:all .5s;
 	transition:all .5s
 }
+.tween5{
+	-moz-transition:all .25s;
+	-o-transition:all .25s;
+	-webkit-transition:all .25s;
+	transition:all .25s
+}
 .fadeOut{
 	opacity: 0;
 	visibility: hidden;
@@ -98,10 +104,17 @@ svg#logo{
 	/*border: 1px red dashed;*/
 }
 
-video{
+.video-wrapper{
 	width: 90%;
-	height: auto;
 	margin: 0 auto;
+	border-radius: 20px;
+	border: 1px rgba(255, 255, 255, 1) solid;
+	overflow: hidden;
+	/*opacity: .2*/
+}
+video{
+	width: 100%;
+	height: auto;
 }
 
 /* Buttons */
