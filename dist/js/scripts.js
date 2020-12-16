@@ -1,6 +1,6 @@
 (function(window, document){
 
-	var email, name, video, myForm, isWinner;
+	var email, name, video, myForm, isWinner, version = '1.0.0';
 
 	function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
 
@@ -10,7 +10,7 @@
 		video = document.getElementById('video');
 
 		isWinner = (document.querySelector('.video-wrapper').getAttribute("data-id") !== null);
-		cl('init isWinner ? '+isWinner);
+		cl('isWinner ? '+isWinner);
 
 		myForm = {
 			email:{value:'E-mail'},
@@ -112,5 +112,5 @@
 		return (false);
 	}*/
 	window.addEventListener('load', init);
-	cl('congrats');
+	cl('version: '+version);
 })(this,document);
