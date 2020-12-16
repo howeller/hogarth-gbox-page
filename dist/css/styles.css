@@ -10,7 +10,7 @@
 	-webkit-transition:all .5s;
 	transition:all .5s
 }
-.tween5{
+.tween25{
 	-moz-transition:all .25s;
 	-o-transition:all .25s;
 	-webkit-transition:all .25s;
@@ -39,7 +39,6 @@
 
 body { 
   background: url(../images/bg.png) no-repeat center center fixed; 
-  /*background: url(images/bg2.png) center center cover no-repeat fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -48,6 +47,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 p, div, input, video {
 	display: block;
 }
@@ -93,16 +93,15 @@ svg#logo{
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	/*border: 1px rgba(255, 255, 255, 0.2) solid;*/
 }
 
 .wrapper{
-	/*width: 100%; */
 	width: calc(100% - 50px); /* offset the 20 px margin on the parent*/
 	max-width: 375px;
 	position: absolute;
-	/*border: 1px red dashed;*/
 }
+
+/* Video */
 
 .video-wrapper{
 	width: 90%;
@@ -110,7 +109,6 @@ svg#logo{
 	border-radius: 20px;
 	border: 1px rgba(255, 255, 255, 1) solid;
 	overflow: hidden;
-	/*opacity: .2*/
 }
 video{
 	width: 100%;
@@ -124,7 +122,6 @@ button, input{
 	border-radius: 15px;
 	border: 0;
 	height: 45px;
-	/*padding: 8px 35px;*/
 	width: 80%;
 }
 
@@ -140,42 +137,24 @@ button.play{
 }
 button.play:hover .cta-txt{
 	color:var(--gold-color);
-	/*background-color:var(--gold-color);*/
 }
-button.continue, input#send/* button.send*/{
+button.continue, input#send{
 	background: var(--gold-color);
 	background: var(--gold-grad);
 }
-/*button.continue:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: #0569b6 ; 
-	background: linear-gradient(to bottom, #0569b6  0%,#071633  100%); 
-	transition: opacity .35s ease-in-out;
-}
-button.continue:hover:before{
-	opacity: 0;
-}*/
-/*button.continue:hover{
-	background:var(--blue);
-}*/
-button.continue:hover .cta-txt, input#send:hover/*button.send:hover .cta-txt*/{
+button.continue:hover .cta-txt, input#send:hover{
 	color:var(--dark-blue);
 }
 
-/* Forms */
+/* Form */
+
 input{
 	margin: 10px auto;
 }
-/*input#email:invalid {border:0 none; }*/
 
 input#name{background-color: #def9ff}
 input#email{background-color: #f0f1f3}
-input#name:hover{background-color: purple}
-input#email:hover{background-color: green}
+input#name:hover{background-color: yellow}
+input#email:hover{background-color: pink}
 
 

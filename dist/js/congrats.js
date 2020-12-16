@@ -28,7 +28,6 @@
 	function onContClick(e){
 		cl('onContClick');
 		document.querySelector('.ani').classList.add('fadeOut');
-		// document.querySelector('.step1').classList.add('fadeOut');
 		initForm();
 		setTimeout(showEnd, 400);
 	}
@@ -42,10 +41,7 @@
 			playVideo();
 		}else{
 			video.addEventListener('canplay', onVideoReady, false);
-		// video.addEventListener("canplaythrough", onVideoReady);
-	 	// video.addEventListener('loadeddata', onVideoReady, false);
 		}
-		// video.src = 'video/Hogarth_TheGoldenBox_800x800_animation2.mp4';
 		document.querySelector('.ani').classList.remove('hidden');
 		video.addEventListener('ended', onVideoEnd);
 	}
