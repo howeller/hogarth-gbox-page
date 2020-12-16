@@ -30,6 +30,10 @@ p, input{
 	text-align: center;
 }
 
+p{
+	margin: 0
+}
+
 .h1{
 	/*font-size: 1em;*/
 	/*font-size: calc(1.5vw + 15px);*/
@@ -56,9 +60,19 @@ span.golden{
 	color: white;
 }
 
+.finale-txt{
+	font-size:0.5em;
+	font-weight: 300;
+	font-style: italic;
+	padding: 0px 35px;
+}
+input#name, input#email{
+	color: var(--dark-blue);
+	font-size: 14px;
+}
 
-@media only screen and (max-device-width: 600px) {
+/*@media only screen and (max-device-width: 600px) {
 	.h1{
 		font-size: 15px !important;
 	}
-}
+}*/

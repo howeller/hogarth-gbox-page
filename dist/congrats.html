@@ -28,19 +28,21 @@
 						<div class="cta-txt tween5">play</div>
 					</button>
 				</div>
-				<div class="ani wrapper">
+				<div class="ani wrapper hidden">
 					<video id="video" muted preload="meta"></video>
 					<button class="continue tween5 hidden">
 						<div class="cta-txt tween5">Continue</div>
 					</button>
 				</div>
 				<div class="finale wrapper hidden tween5">
+					<p class="finale-txt">Something very special is coming your&nbsp;way.</p>
+					<p class="finale-txt">Just tell us where to send it, and how to contact&nbsp;you.</p>
 					<div id="input_container">
-						<form name="eform">
+						<form name="eform" action="askBruno.php">
 						<!-- <form name="eform" onsubmit="return false;"> -->
-							<input type="text" name="input-name" id="name" value="Name" required/>
-							<input type="email" name="email" id="email" value="email" required/>
-							<input type="submit" id="send" value="Send">
+							<input type="text" name="input-name" id="name" class="tween5" required/>
+							<input type="email" name="email" id="email" class="tween5" required/>
+							<input type="submit" id="send" value="Send" class="cta-txt tween5">
 							<!-- <input type="submit" id="send" value="Send" onClick="onSubmitClick(eform)"> -->
 						</form>
 					</div>

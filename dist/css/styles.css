@@ -1,5 +1,5 @@
 :root {
-	--dark-blue: #0e548d;
+	--dark-blue: #0d467d;
 	--blue: #00aeef;
   --gold-color: #ddb66a;
   --gold-grad: linear-gradient(0deg, rgba(168,143,4,1) 0%, rgba(226,193,8,1) 100%);
@@ -58,6 +58,7 @@ p, div, input, video {
 
 .column{
 	/*padding: 50px 50px 0;*/
+	/*margin: 60px 0;*/
 	margin: 60px 20px;
 	width: 100%;
 	max-width: 375px;
@@ -69,15 +70,17 @@ svg#logo{
 	display: block;
 	width: 80px;
 	height: auto;
-	padding: 80px 0;
+	padding: 12vh 0;
+	/*padding-top: clamp(90px, 16vh, 180px);*/
+	padding-bottom: clamp(20px, 6vh, 60px);
 	margin: 0 auto;
 }
 
 .shadow {
 	/*box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];*/
-  -webkit-box-shadow: 0px 10px 50px -5px rgba(0,0,0,1), inset 0 0 50px rgba(0,0,0,0.5);
-  -moz-box-shadow:    0px 10px 50px -5px rgba(0,0,0,1), inset 0 0 50px rgba(0,0,0,0.5);
-  box-shadow: 0px 10px 50px -5px rgba(0,0,0,1), inset 0 0 50px rgba(0,0,0,0.5);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  -webkit-box-shadow: 0px 5px 60px -5px black, inset 0 0 50px rgba(0,0,0,0.5);
+  -moz-box-shadow:    0px 5px 60px -5px black, inset 0 0 50px rgba(0,0,0,0.5);
+  box-shadow: 0px 5px 60px -5px black, inset 0 0 50px rgba(0,0,0,0.5);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .main-wrapper{
@@ -88,11 +91,11 @@ svg#logo{
 }
 
 .wrapper{
-	width: 100%;
+	/*width: 100%; */
+	width: calc(100% - 50px); /* offset the 20 px margin on the parent*/
 	max-width: 375px;
 	position: absolute;
 	/*border: 1px red dashed;*/
-	/*top: 0;*/
 }
 
 video{
@@ -100,21 +103,25 @@ video{
 	height: auto;
 	margin: 0 auto;
 }
+
 /* Buttons */
 
 button, input{
 	box-sizing: border-box;
 	border-radius: 15px;
-	cursor: pointer !important;
 	border: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 8px 35px;
-	margin: 60px auto;
+	height: 45px;
+	/*padding: 8px 35px;*/
 	width: 80%;
 }
 
+button, input#send{
+	cursor: pointer !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 60px auto;
+}
 button.play{
 	background-color: var(--blue);
 }
@@ -143,7 +150,19 @@ button.continue:hover:before{
 /*button.continue:hover{
 	background:var(--blue);
 }*/
-button.continue:hover .cta-txt/*,button.send:hover .cta-txt*/{
-	color:var(--blue);
+button.continue:hover .cta-txt, input#send:hover/*button.send:hover .cta-txt*/{
+	color:var(--dark-blue);
 }
+
+/* Forms */
+input{
+	margin: 10px auto;
+}
+/*input#email:invalid {border:0 none; }*/
+
+input#name{background-color: #def9ff}
+input#email{background-color: #f0f1f3}
+input#name:hover{background-color: purple}
+input#email:hover{background-color: green}
+
 
