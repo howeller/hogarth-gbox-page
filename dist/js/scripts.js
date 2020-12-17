@@ -1,13 +1,13 @@
 (function(window, document){
 
-	var email, name, video, myForm, isWinner, version = '1.0.1';
+	var email, name, video, myForm, isWinner, isPlaying, version = '1.0.7';
 
 	function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
 
 	function init(e){
 		isWinner = document.querySelector('.video-wrapper').hasAttribute("data-id");
-		cl('isWinner ? '+isWinner);
-		
+		cl('isWinner ? '+isWinner +' iOS? '+iOS());
+
 		email = document.getElementById('email');
 		name = document.getElementById('name');
 		video = document.getElementById('video');
@@ -23,8 +23,8 @@
 	function onPlayClick(e){
 		cl('onPlayClick');
 		document.querySelector('.step1').classList.add('fadeOut');
-		// loadVideo();
-		setTimeout(loadVideo, 400);
+		var videoInit = iOS() ?	onVideoReady : checkVideoStatus;// Video events do not fire in iOS
+		setTimeout(videoInit, 400);
 	}
 
 	function onContClick(e){
@@ -36,26 +36,31 @@
 
 	/* Video */
 
-	function loadVideo(e){
-		cl('loadVideo '+video.readyState);
-
-		if(video.readyState===4){
-			playVideo();
+	function checkVideoStatus(e){
+		cl('checkVideoStatus '+video.readyState);
+		if(video.readyState > 3){
+			onVideoReady();
 		}else{
-			cl('Video not ready... waiting for canplay event');
+			cl('Video not ready... waiting for video canplay event');
 			video.addEventListener('canplay', onVideoReady, false);
 		}
-		document.querySelector('.ani').classList.remove('hidden');
-		video.addEventListener('ended', onVideoEnd);
 	}
+
 	function playVideo(){
 		cl('	playVideo >>');
+		if(isPlaying)return;
+		isPlaying = true;
 		video.play();
 	}
+
 	function onVideoReady(){
 		cl('	onVideoReady!');
+		if(isPlaying)return;
+		document.querySelector('.ani').classList.remove('hidden');
 		playVideo();
+		video.addEventListener('ended', onVideoEnd);
 	}
+
 	function onVideoEnd(){
 		cl('	onVideoEnd');
 		video.pause();
@@ -64,7 +69,7 @@
 			var _btn = document.querySelector('.continue');
 			_btn.classList.remove('hidden');
 			_btn.addEventListener('click', onContClick);
-		};
+		}
 	}
 
 	function showEnd(e){
@@ -98,6 +103,20 @@
 		if(_input.value==''){_input.value=myForm[_id].value;}
 	}
 
+	/* iOS Sniffing */
+
+	function iOS() {
+		return [
+		'iPad Simulator',
+		'iPhone Simulator',
+		'iPod Simulator',
+		'iPad',
+		'iPhone',
+		'iPod'
+		].includes(navigator.platform)
+		// iPad on iOS 13 detection
+		|| (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+	}
 /*	function onSuccessAni(){
 		if(emailSuccess){return;}
 		//cl("* onSuccessAni *");
