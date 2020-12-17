@@ -1,16 +1,16 @@
 (function(window, document){
 
-	var email, name, video, myForm, isWinner, version = '1.0.0';
+	var email, name, video, myForm, isWinner, version = '1.0.1';
 
 	function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
 
 	function init(e){
+		isWinner = document.querySelector('.video-wrapper').hasAttribute("data-id");
+		cl('isWinner ? '+isWinner);
+		
 		email = document.getElementById('email');
 		name = document.getElementById('name');
 		video = document.getElementById('video');
-
-		isWinner = (document.querySelector('.video-wrapper').getAttribute("data-id") !== null);
-		cl('isWinner ? '+isWinner);
 
 		myForm = {
 			email:{value:'E-mail'},

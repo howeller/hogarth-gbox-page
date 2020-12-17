@@ -60,12 +60,19 @@ span.golden{
 	font-size:clamp(17px, 4vw, 22px);
 	font-weight: 300;
 	font-style: italic;
-	padding-top: clamp(5px, 2vw, 35px);
-	padding-bottom: clamp(5px, 2vw, 35px);
 	padding-left: clamp(55px, 4vw, 70px);
 	padding-right: clamp(55px, 4vw, 70px);
 	/*padding: 10px 70px;*/
 }
+
+p.finale-txt:first-of-type {
+	padding-top: clamp(0px, 2vw, 35px);
+	padding-bottom: clamp(15px, 2vw, 35px);
+}
+p.finale-txt:last-of-type {
+	padding-bottom: clamp(40px, 4vw, 70px);
+}
+
 input#name, input#email{
 	color: var(--dark-blue);
 	font-size: 14px;
