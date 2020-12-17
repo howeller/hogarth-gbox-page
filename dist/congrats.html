@@ -40,16 +40,20 @@
 						<div class="cta-txt tween5">play</div>
 					</button>
 				</div>
-				<div class="finale wrapper hidden tween5">
+				<div class="finale wrapper tween5 hidden">
 					<p class="finale-txt">Something very special is coming your&nbsp;way.</p>
 					<p class="finale-txt">Just tell us where to send it, and how to contact&nbsp;you.</p>
 					<div id="input_container">
-						<form name="winner-form" action="/winner-info" method="post">
+						<form name="winner-form" id="gForm" action="">
 							<input type="text" name="input-name" id="name" class="tween5" required/>
 							<input type="email" name="email" id="email" class="tween5" required/>
 							<input type="submit" id="send" value="Send" class="cta-txt tween5">
 						</form>
 					</div>
+				</div>
+				<div class="success wrapper hidden tween5">
+					<p class="h1">Thank you.</p>
+					<p class="txt">Your gold box will be on it's way soon.</p>
 				</div>
 			</div>
 		</div>

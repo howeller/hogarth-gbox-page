@@ -1,6 +1,6 @@
 (function(window, document){
 
-	var email, name, video, myForm, isWinner, isPlaying, version = '1.0.7';
+	var emailSuccess, email, form, name, video, myForm, isWinner, isPlaying, version = '1.1.0';
 
 	function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
 
@@ -11,13 +11,15 @@
 		email = document.getElementById('email');
 		name = document.getElementById('name');
 		video = document.getElementById('video');
+		form = document.getElementById( 'gForm' );
 
 		myForm = {
 			email:{value:'E-mail'},
 			name:{value:'Name'}
 		}
 
-		 document.querySelector('.play').addEventListener('click', onPlayClick);
+		document.querySelector('.play').addEventListener('click', onPlayClick);
+		// initForm();//Testing only!
 	}
 
 	function onPlayClick(e){
@@ -84,7 +86,43 @@
 		email.value = myForm.email.value;
 		name.value = myForm.name.value;
 		email.onfocus = name.onfocus = onFocusClick;// When the input fields is clicked.
-		email.onblur = name.onblur = onBlurClick;	
+		email.onblur = name.onblur = onBlurClick;
+
+	// Take over form submit event.
+		form.addEventListener( "submit", function ( e ) {
+			if(isValidEmail(email.value) && isValidName(name.value)){
+				e.preventDefault();
+				sendData();
+			}
+		});
+	}
+
+	function sendData() {
+		cl('sendData');
+		var _xhr = new XMLHttpRequest();
+		var _fd = new FormData(form);// Bind the FormData object and the form element
+
+		// Define what happens on successful data submission
+		_xhr.addEventListener( "load", onFormSuccess, false);
+		_xhr.addEventListener( "error", onFormError, false);
+		_xhr.open( "POST", "/winner-info" );// Set up our request
+		_xhr.send( _fd );// The data sent is what the user provided in the form	
+	}
+
+	function onFormSuccess(e){
+		cl("* onFormSuccess *"+ e.target.responseText );
+		document.querySelector('.finale').classList.add('fadeOut');
+		setTimeout(	onSuccessAni, 400 );
+	}
+
+	function onFormError(e){
+		alert( 'Oops! Something went wrong. \nPlease try again' );
+		cl("* onFormError * "+ e );
+	}
+
+	function onSuccessAni(){
+		cl("* onSuccessAni *");
+		document.querySelector('.success').classList.remove('hidden');
 	}
 
 	function onFocusClick(e){
@@ -103,6 +141,20 @@
 		if(_input.value==''){_input.value=myForm[_id].value;}
 	}
 
+	function isValidName(entry){
+		return entry !== myForm.name.value;
+	}
+
+	function isValidEmail(entry){
+		cl("isValidEmail "+entry);
+		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
+			return (true);
+		}
+		alert("You have entered an invalid email address!");
+		return (false);
+	}
+
+
 	/* iOS Sniffing */
 
 	function iOS() {
@@ -117,19 +169,7 @@
 		// iPad on iOS 13 detection
 		|| (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 	}
-/*	function onSuccessAni(){
-		if(emailSuccess){return;}
-		//cl("* onSuccessAni *");
-		document.querySelector('.finale').classList.add('fadeOut');
-	}
-	function ValidateEmail(mail){
-		//cl("ValidateEmail "+mail)
-		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
-			return (true);
-		}
-		//alert("You have entered an invalid email address!");
-		return (false);
-	}*/
-	window.addEventListener('load', init);
+
 	cl('version: '+version);
+	window.addEventListener('load', init);
 })(this,document);
