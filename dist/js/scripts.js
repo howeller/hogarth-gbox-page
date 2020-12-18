@@ -19,7 +19,7 @@
 		}
 
 		document.querySelector('.play').addEventListener('click', onPlayClick);
-		// initForm();//Testing only!
+		initForm();//Testing only!
 	}
 
 	function onPlayClick(e){
@@ -90,7 +90,8 @@
 
 	// Take over form submit event.
 		form.addEventListener( "submit", function ( e ) {
-			if(isValidEmail(email.value) && isValidName(name.value)){
+			// if(isValidEmail(email.value) && isValidName(name.value)){
+			if(isValidName(name.value)){
 				e.preventDefault();
 				sendData();
 			}
@@ -105,7 +106,8 @@
 		// Define what happens on successful data submission
 		_xhr.addEventListener( "load", onFormSuccess, false);
 		_xhr.addEventListener( "error", onFormError, false);
-		_xhr.open( "POST", "/winner-info" );// Set up our request
+		_xhr.open( "POST", "winner-info.php" );// Set up our request
+		// _xhr.open( "POST", "/winner-info" );// Set up our request
 		_xhr.send( _fd );// The data sent is what the user provided in the form	
 	}
 
